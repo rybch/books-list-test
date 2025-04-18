@@ -1,0 +1,40 @@
+<div mat-dialog-header class="flex items-baseline justify-between">
+  <h1 mat-dialog-title>{{ data?.book ? 'Edit book' : 'Add new book' }}</h1>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="flex flex-col gap-4">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Author</mat-label>
+      <input matInput formControlName="author" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Publish year</mat-label>
+      <input matInput type="number" formControlName="year" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Cover image link</mat-label>
+      <input matInput formControlName="coverUrl" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button type="button" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

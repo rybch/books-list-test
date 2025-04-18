@@ -1,0 +1,30 @@
+<section class="p-6">
+  <header class="flex justify-between items-center">
+    <h1>Books list</h1>
+    <button mat-flat-button (click)="add()">
+      <mat-icon>add</mat-icon>
+      Add book
+    </button>
+  </header>
+  <mat-form-field appearance="fill">
+    <input matInput placeholder="Пошук" [(ngModel)]="searchParam" />
+  </mat-form-field>
+
+  <div class="w-fit">
+    @for (book of books$ | async | filterBySearch: searchParam; track $index) {
+      <div class="flex items-baseline gap-8">
+        <div (click)="openDetails(book)" class="cursor-pointer whitespace-nowrap flex-1">
+          {{ book.title }} - {{ book.author }} ({{ book.year }})
+        </div>
+        <button matTooltip="Delete book" mat-icon-button color="warn" (click)="delete(book.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button matTooltip="Edit book" mat-icon-button color="accent" (click)="edit(book)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    } @empty {
+      No books found :(
+    }
+  </div>
+</section>

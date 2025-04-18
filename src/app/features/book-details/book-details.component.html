@@ -1,0 +1,22 @@
+<div mat-dialog-header class="flex items-baseline justify-between">
+  <h1 mat-dialog-title>Book Preview</h1>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content>
+  @if (data.book.coverUrl) {
+    <img [src]="data.book.coverUrl" alt="{{ data.book.title }}" class="h-60" />
+  }
+  <p><strong>Name:</strong> {{ data.book.title }}</p>
+  <p><strong>Author:</strong> {{ data.book.author }}</p>
+  <p><strong>Publish year:</strong> {{ data.book.year }}</p>
+  <p><strong>Description:</strong> {{ data.book.description }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-stroked-button color="primary" [mat-dialog-close]="'edit'">Edit</button>
+  <button mat-stroked-button color="warn" [mat-dialog-close]="'close'">Delete</button>
+</mat-dialog-actions>
